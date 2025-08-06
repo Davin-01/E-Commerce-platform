@@ -1,13 +1,19 @@
 import React from 'react'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainLayout from './Layout/MainLayout';
+import HomePage from './components/Home/HomePage';
 
 function App() {
   
-
   return (
-    <h1 class="text-3xl font-bold underline text-red-500"> 
-       Hello world!  
-       </h1>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+      <Route index element="{<HomePage />}" />
+      </Route>
+    </Routes>
+    </BrowserRouter>
+   
   )
 }
 
