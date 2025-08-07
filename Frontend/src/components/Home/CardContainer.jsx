@@ -33,7 +33,7 @@ const sampleProducts = [
 ];
 
 
-const CardContainer = () => {
+const CardContainer = ({products}) => {
   return (
      <section className="py-12 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
@@ -42,7 +42,7 @@ const CardContainer = () => {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {sampleProducts.map((product) => (
+          {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
