@@ -2,28 +2,34 @@ import React, { useEffect, useState } from 'react'
 import CardContainer from './CardContainer'
 import Header from './Header'
 import api from '../../api'
+import PlaceHolderContainer from '../ui/PlaceHolderContainer'
+import Error from '../ui/Error'
 
 const HomePage = () => {
-
   const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState("")
 
-  useEffect(function() {
+  useEffect(() => {
+    setLoading(true)
     api.get("products")
-  .then(res => {
-    console.log(res.data)
-    setProducts(res.data)
-  })
-  .catch(err => {
-    console.log(err.message)
-  })
+      .then(res => {
+        setProducts(res.data)
+        setLoading(false)
+        setError("")
+      })
+      .catch(err => {
+        setError(err.message)
+        setLoading(false)
+      })
   }, [])
-
-  
 
   return (
     <>
-    <Header />
-    <CardContainer products={products} />
+      <Header />
+      {error && <Error error={error} />}
+      {loading && <PlaceHolderContainer />}
+      {!loading && !error && <CardContainer products={products} />}
     </>
   )
 }
