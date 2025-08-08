@@ -14,7 +14,7 @@ const ProductCard = ({product}) => {
       <p className="text-sm text-gray-500 mb-2">{product.category}</p>
       <p className="text-md font-bold text-black mb-4">Ksh.{product.price}</p>
       <Link 
-        to={`/product/${product.id}`}
+        to={`/products/${product.slug}`}
         className="block text-center bg-black text-white py-2 rounded hover:bg-gray-800 transition"
       >
         View Details
