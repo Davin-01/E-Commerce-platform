@@ -15,6 +15,6 @@ def products(request):
 
 @api_view(['GET'])
 def product_detail(request, slug):
-    product = get_object_or_404(Product, slug=slug)
+    product = get_object_or_404(Product, slug__iexact=slug)
     serializer = DetailedProductSerializer(product)
     return Response(serializer.data)

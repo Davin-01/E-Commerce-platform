@@ -14,7 +14,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    api.get(`products/${slug}/`)
+    api.get(`/products/${slug}/`)
       .then(res => {
         setProduct(res.data);
         setError('');
@@ -35,7 +35,7 @@ const ProductPage = () => {
       <div className="max-w-4xl mx-auto p-4">
         <div className="flex flex-col md:flex-row bg-white shadow-md rounded-lg overflow-hidden">
           <img
-            src={product.image}
+            src={`http://127.0.0.1:8000${product.image}`}
             alt={product.name}
             className="w-full md:w-1/2 h-64 object-cover"
           />
